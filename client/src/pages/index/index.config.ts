@@ -1,3 +1,4 @@
 export default {
-  navigationBarTitleText: '云开发 QuickStart'
+  navigationBarTitleText: '心灵捕手',
+  navigationStyle:"custom"
 }

@@ -1,0 +1,31 @@
+.index{
+    padding: 0 32px;
+}
+
+.start-button{
+    width: 250rpx;
+    height: 250rpx;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    color: rgba(105, 105, 105, 0.8);
+    font-size: 64rpx;
+    font-weight: bold;
+}
+
+.sub-button-wrap{
+    padding: 48rpx 64rpx;
+}
+
+.sub-button{
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    color: rgba(105, 105, 105, 0.8);
+    font-weight: bold;
+}
+
+.daily-words{
+    font-size: 48rpx;
+    font-weight: bold;
+    color: rgba(105, 105, 105, 0.7);
+}
