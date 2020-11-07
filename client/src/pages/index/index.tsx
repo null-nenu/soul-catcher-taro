@@ -5,7 +5,7 @@ import { AtButton, AtAvatar, AtIcon, AtMessage } from "taro-ui";
 import backgroundImage from "./background";
 import useAppModel from "@/models/appModel";
 
-import './index.scss'
+import "./index.css";
 
 export default function Index() {
   const [statusBarHeight, setStatusBarHeight] = useState(30);
@@ -83,5 +83,3 @@ export default function Index() {
     </View >
   );
 }
-
-
