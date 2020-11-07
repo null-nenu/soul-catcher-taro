@@ -1,3 +1,5 @@
+var path = require('path');
+
 const config = {
   projectName: 'soul-catcher-taro',
   date: '2020-11-7',
