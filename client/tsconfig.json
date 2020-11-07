@@ -22,7 +22,18 @@
     "typeRoots": [
       "node_modules/@types",
       "global.d.ts"
-    ]
+    ],
+    "paths": {
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/pages/*": [
+        "./src/pages/*"
+      ],
+      "@/models/*": [
+        "./src/models/*"
+      ]
+    }
   },
   "exclude": [
     "node_modules",
