@@ -8,6 +8,8 @@ import { AtMessage } from 'taro-ui';
 
 import request, { host } from "@/utils/request";
 
+import "./app.scss";
+
 type PropsType = {
   children?: React.ReactNode;
 }

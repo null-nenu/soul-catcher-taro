@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Taro, { useDidShow } from "@tarojs/taro";
 import { View, Text } from "@tarojs/components";
 import { AtButton, AtCard, AtActivityIndicator } from "taro-ui";
@@ -10,22 +10,26 @@ export default function Tests() {
     const [tests, setTests] = useState([] as any[]);
 
     // do something when the page show every time
-    useDidShow(function () {
-        (async function () {
-            setLoading(true);
-            try {
-                let res = await request({ url: "/api/evaluation/" });
+    useEffect(function () {
+        fetchEvaluations();
+    }, []);
+
+    async function fetchEvaluations() {
+        setLoading(true);
+        try {
+            let res = await request({ url: "/api/evaluation/" });
+            if (res !== undefined) {
                 setLoading(false);
                 setTests(res);
-            } catch (error) {
-                setLoading(false);
             }
-        })();
-    });
+        } catch (error) {
+            setLoading(false);
+        }
+    }
 
     // navigation to question page when test card click
     function handleCardClick(id: number) {
-        Taro.navigateTo({ url: `/pages/question/index?id=${id}` });
+        Taro.navigateTo({ url: `/pages/tip/index?id=${id}` });
     }
 
     return (
@@ -36,19 +40,28 @@ export default function Tests() {
                 </Text>
             </View>
             <View>
-                <AtActivityIndicator mode='center' isOpened={loading} content='加载中...' />
-                <View className='at-row cards'>
-                    {tests.map(function (item: any, index: number) {
-                        return (
-                            <View className="card" onClick={handleCardClick.bind(this, item?.id as number)}>
-                                <View>
-                                    <View className="card-title">{item?.name}</View>
-                                    <View className="card-body">{item?.detail}</View>
+                {loading &&
+                    <AtActivityIndicator mode='center' isOpened={loading} content='加载中...' />
+                }
+                {!loading &&
+                    <View className='at-row cards'>
+                        {tests.map(function (item: any, index: number) {
+                            return (
+                                <View className="card" onClick={handleCardClick.bind(this, item?.id as number)}>
+                                    <View>
+                                        <View className="card-title">{item?.name}</View>
+                                        <View className="card-body">{item?.detail}</View>
+                                    </View>
                                 </View>
-                            </View>
-                        );
-                    })}
-                </View>
+                            );
+                        })}
+                    </View>
+                }
+                {(!loading && tests.length === 0) &&
+                    <View className="nope-warn" onClick={fetchEvaluations}>
+                        <Text>暂无量表，点击加载</Text>
+                    </View>
+                }
             </View>
         </View>
     );

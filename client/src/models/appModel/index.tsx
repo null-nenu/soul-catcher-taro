@@ -14,6 +14,8 @@ function useApp() {
     const [music, setMusic] = useState(undefined as string | undefined);
     // solgan
     const [solgan, setSolgan] = useState("你从来都不是一座孤岛");
+    // mute
+    const [mute, setMute] = useState(false);
 
     return {
         canI, setCanI,
@@ -21,7 +23,8 @@ function useApp() {
         avatar, setAvatar,
         background, setBackground,
         music, setMusic,
-        solgan, setSolgan
+        solgan, setSolgan,
+        mute, setMute
     };
 }
 

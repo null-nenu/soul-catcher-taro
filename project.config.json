@@ -55,6 +55,13 @@
         {
           "name": "pages/tests/index",
           "pathName": "pages/tests/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/question/index",
+          "pathName": "pages/question/index",
+          "query": "id=5",
           "scene": null
         }
       ]

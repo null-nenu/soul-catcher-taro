@@ -1,0 +1,11 @@
+.index {}
+
+.volume-button {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50rpx;
+  padding: 0;
+  line-height: 1;
+  justify-content: center;
+  align-items: center;
+}
