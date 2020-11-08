@@ -1,0 +1,56 @@
+.index {
+  padding: 0 32px;
+}
+
+.tips {
+  font-size: 28rpx;
+  margin-bottom: 32rpx;
+  color: rgba(105, 105, 105, 1);
+  background: rgba(220, 220, 220, 0.25);
+  padding: 16rpx;
+  border-radius: 8rpx;
+}
+
+AtButton {
+  padding: 32rpx;
+}
+
+.cards {
+  justify-content: space-between;
+}
+
+.card {
+  width: calc((100% - 16rpx - 32rpx - 16rpx)/ 2);
+  height: 200rpx;
+  padding: 8rpx;
+  border-radius: 8rpx;
+  background: rgba(220, 220, 220, 0.5);
+}
+
+.card:active {
+  background: rgba(220, 220, 220, 1);
+}
+
+.card .card-title {
+  font-weight: bold;
+  margin-bottom: 8rpx;
+  color: rgba(105, 105, 105, 1);
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: dotted 1rpx rgba(105, 105, 105, 0.5);
+}
+
+.card .card-body {
+  font-size: 28rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(105, 105, 105, 0.8);
+}

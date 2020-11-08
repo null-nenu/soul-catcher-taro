@@ -65,9 +65,7 @@ export default function Index() {
         title: "请登录",
         content: "查看历史记录需要登录账号，请您先登录。",
         success(res) {
-          if (res.cancel) {
-            // cancle
-          } else {
+          if (res.cancel !== true) {
             // yes
           }
         }
