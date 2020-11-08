@@ -10,7 +10,7 @@ import "./index.css";
 export default function Index() {
   const [statusBarHeight, setStatusBarHeight] = useState(30);
   const [titleBarHeight, setTitleBarHeight] = useState(44);
-  const [background, setBackground] = useState("");
+  const [background, setBackground] = useState(undefined as string | undefined);
   const appModel = useAppModel();
 
   useEffect(function () {
@@ -38,6 +38,12 @@ export default function Index() {
     })();
   }, []);
 
+  useEffect(function () {
+    if (appModel?.background) {
+      setBackground(appModel.background)
+    }
+  }, [appModel])
+
   function handleLoginClick() {
     if (appModel.canI === true) {
       // logined
@@ -51,8 +57,27 @@ export default function Index() {
     Taro.navigateTo({ "url": "/pages/tests/index" });
   }
 
+  function handleHistoryClick() {
+    if (appModel.canI) {
+
+    } else {
+      Taro.showModal({
+        title: "请登录",
+        content: "查看历史记录需要登录账号，请您先登录。",
+        success(res) {
+          if (res.cancel) {
+            // cancle
+          } else {
+            // yes
+          }
+        }
+      })
+    }
+  }
+
   return (
-    <View className="index" style={{ background: `url(${background})`, backgroundSize: 'cover' }}>
+    <View className="index" style={{ background: `url(${background})`, backgroundSize: 'cover', transition: "background-image 3s" }}>
+      <AtMessage />
       <View style={{ height: `${statusBarHeight}px` }} />
       <View className='at-row' style={{ height: `${titleBarHeight}px` }}>
         <View className='at-col'>
@@ -69,7 +94,7 @@ export default function Index() {
           </View>
         </View>
         <View className='at-row' style={{ paddingTop: "64rpx", justifyContent: "center" }}>
-          <Text className="daily-words">你从来都不是一座孤岛</Text>
+          <Text className="daily-words">{appModel.solgan}</Text>
         </View>
       </View>
       <View className='at-row' style={{ height: "256rpx" }}>
@@ -77,7 +102,7 @@ export default function Index() {
           <AtButton className="sub-button">心理漫画</AtButton>
         </View>
         <View className='at-col  sub-button-wrap'>
-          <AtButton className="sub-button">评测记录</AtButton>
+          <AtButton className="sub-button" onClick={handleHistoryClick}>评测记录</AtButton>
         </View>
       </View>
     </View >
