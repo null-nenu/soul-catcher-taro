@@ -11,6 +11,7 @@
     color: rgba(105, 105, 105, 0.8);
     font-size: 64rpx;
     font-weight: bold;
+    backdrop-filter: blur(5px);
 }
 
 .sub-button-wrap{
@@ -27,5 +28,7 @@
 .daily-words{
     font-size: 48rpx;
     font-weight: bold;
-    color: rgba(105, 105, 105, 0.7);
+    /*color:transparent;  rgba(105, 105, 105, 0.7)*/
+    text-align: center;
+    filter: invert(1) grayscale(1) contrast(9);
 }
