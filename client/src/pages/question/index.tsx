@@ -4,14 +4,14 @@ import { View } from "@tarojs/components";
 
 import request, { host } from "@/utils/request";
 import "./index.css";
-import { AtButton, AtIcon, AtProgress } from "taro-ui";
+import { AtButton, AtIcon, AtProgress, AtActivityIndicator } from "taro-ui";
 import useAppModel from "@/models/appModel";
 
 export default function Question() {
     const appModel = useAppModel();
     const [id, setId] = useState(undefined as undefined | string);
     const [loading, setLoading] = useState(false);
-    const [evaluation, setEvaluation] = useState({} as any);
+    const [evaluation, setEvaluation] = useState(undefined as any);
     const [indexQ, setIndexQ] = useState(0);
     const [choices, setChoices] = useState([] as number[])
 
@@ -42,14 +42,34 @@ export default function Question() {
         }
     }
 
-    function handleOptionClick(id: number) {
-        let new_choices = [...choices, id];
+    async function postEvaluation(data: any) {
+        try {
+            Taro.showLoading({ title: "评测中..." })
+            let res = await request({ url: `/api/evaluation/score/`, method: 'POST', data: data });
+            if (res !== undefined) {
+                Taro.hideLoading();
+                if (res?.id !== undefined) {
+                    Taro.redirectTo({ url: `/pages/score/index?id=${res?.id}` });
+                }
+            }
+        } catch (error) {
+            Taro.hideLoading();
+        }
+    }
+
+    function handleOptionClick(optionId: number) {
+        let new_choices = [...choices, optionId];
         setChoices(new_choices);
 
         if (indexQ < (evaluation?.questions?.length || 0) - 1) {
             setIndexQ(indexQ + 1);
         } else {
-            Taro.redirectTo({ url: "/pages/score/index" });
+            //
+            let postData = {
+                evaluation: id,
+                options: new_choices
+            };
+            postEvaluation(postData);
         }
     }
 
@@ -63,44 +83,49 @@ export default function Question() {
 
     return (
         <View className="index">
-            <View>
+            {loading &&
+                <AtActivityIndicator mode='center' isOpened={loading} content='评测加载中...' />
+            }
+            {(!loading && evaluation !== undefined) &&
                 <View>
-                    <AtProgress percent={(choices.length / (evaluation?.questions?.length || 0)) * 100} isHidePercent={true} />
-                </View>
-                <View>
-                    <AtButton size="small" full={false} circle={true} onClick={handleVolumeClick} className="volume-button">
-                        {appModel.music === undefined &&
-                            <AtIcon value="blocked" size="18"/>
-                        }
-                        {(appModel.music !== undefined && appModel.mute) &&
-                            <AtIcon value="volume-off" size="18"/>
-                        }
-                        {(appModel.music !== undefined && !appModel.mute) &&
-                            <AtIcon value="volume-plus" size="18"/>
-                        }
-                    </AtButton>
-                </View>
-                <View>
-                    {evaluation?.questions?.map(function (question: any, iQ: number) {
-                        if (indexQ === iQ) {
-                            return (
-                                < View >
-                                    <View>{question?.content}</View>
-                                    <View>
-                                        {question?.options?.map(function (option: any, iO: number) {
-                                            return (
-                                                <View onClick={handleOptionClick.bind(this, option?.id)}>
-                                                    <View>{option?.content}</View>
-                                                </View>
-                                            )
-                                        })}
+                    <View>
+                        <AtProgress percent={(choices.length / (evaluation?.questions?.length || 0)) * 100} isHidePercent={true} />
+                    </View>
+                    <View>
+                        <AtButton size="small" full={false} circle={true} onClick={handleVolumeClick} className="volume-button">
+                            {appModel.music === undefined &&
+                                <AtIcon value="blocked" size="18" />
+                            }
+                            {(appModel.music !== undefined && appModel.mute) &&
+                                <AtIcon value="volume-off" size="18" />
+                            }
+                            {(appModel.music !== undefined && !appModel.mute) &&
+                                <AtIcon value="volume-plus" size="18" />
+                            }
+                        </AtButton>
+                    </View>
+                    <View>
+                        {evaluation?.questions?.map(function (question: any, iQ: number) {
+                            if (indexQ === iQ) {
+                                return (
+                                    < View >
+                                        <View>{question?.content}</View>
+                                        <View>
+                                            {question?.options?.map(function (option: any, iO: number) {
+                                                return (
+                                                    <View onClick={handleOptionClick.bind(this, option?.id)}>
+                                                        <View>{option?.content}</View>
+                                                    </View>
+                                                )
+                                            })}
+                                        </View>
                                     </View>
-                                </View>
-                            )
-                        }
-                    })}
+                                )
+                            }
+                        })}
+                    </View>
                 </View>
-            </View>
+            }
         </View >
     );
 }
