@@ -19,14 +19,15 @@ AtButton {
 }
 
 .card {
-  width: calc((100% - 16rpx - 32rpx - 16rpx)/ 2);
-  height: 200rpx;
-  padding: 8rpx;
+  /*calc((100% - 16rpx - 32rpx - 16rpx)/ 2)*/
+  width: 100%;
+  height: 150rpx;
+  padding: 24rpx;
   border-radius: 8rpx;
   /* rgba(220, 220, 220, 0.5)*/
-  /*background: rgba(193, 203, 215, 0.5);*/
-  margin-bottom: 32rpx;
-  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+  background: rgba(193, 203, 215, 0.5);
+  margin-bottom: 24rpx;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
 }
 
 .card:active {
@@ -47,11 +48,11 @@ AtButton {
 }
 
 .card .card-body {
-  font-size: 28rpx;
+  font-size: 32rpx;
   display: -webkit-box;
   word-break: break-all;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
   color: rgba(105, 105, 105, 0.8);

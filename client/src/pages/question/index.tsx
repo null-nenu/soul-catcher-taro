@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Taro, { getCurrentInstance } from "@tarojs/taro";
+import Taro, { getCurrentInstance, useDidHide, useDidShow } from "@tarojs/taro";
 import { View } from "@tarojs/components";
 
 import request, { host } from "@/utils/request";
@@ -13,13 +13,25 @@ export default function Question() {
     const [loading, setLoading] = useState(false);
     const [evaluation, setEvaluation] = useState(undefined as any);
     const [indexQ, setIndexQ] = useState(0);
-    const [choices, setChoices] = useState([] as number[])
+    const [choices, setChoices] = useState([] as number[]);
+    const [audio, setAudio] = useState(Taro.createInnerAudioContext());
 
     useEffect(function () {
         // get & set evaluation id
         if (getCurrentInstance().router?.params?.id) {
             setId(getCurrentInstance().router?.params?.id);
+            if (audio !== undefined) {
+                audio.loop = true;
+            }
         }
+
+        return (
+            function () {
+                if (audio !== undefined) {
+                    audio.pause();
+                }
+            }
+        );
     }, []);
 
     // do something when id changed
@@ -28,6 +40,31 @@ export default function Question() {
             fetchEvaluation(id);
         }
     }, [id]);
+
+    useEffect(function () {
+        if (appModel.music !== undefined) {
+            audio.src = appModel.music;
+            if (appModel.mute !== true) {
+                audio.play();
+            }
+        }
+    }, [appModel.music]);
+
+    useEffect(function () {
+        if (appModel.music !== undefined && audio !== undefined) {
+            if (appModel.mute !== true) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    }, [appModel.mute]);
+
+    useDidShow(function () {
+        if (appModel.music !== undefined && appModel.mute !== true && audio !== undefined && audio?.src !== undefined) {
+            audio.play();
+        }
+    });
 
     async function fetchEvaluation(id: string) {
         try {
