@@ -8,6 +8,7 @@ import "./index.css";
 export default function Tests() {
     const [loading, setLoading] = useState(false);
     const [tests, setTests] = useState([] as any[]);
+    const colors = ["rgba(193,203,215, 0.5)", "rgba(181,196,177, 0.5)", "rgba(224,205,207, 0.5)", "rgba(201,192,211, 0.5)"];
 
     // do something when the page show every time
     useEffect(function () {
@@ -47,7 +48,10 @@ export default function Tests() {
                     <View className='at-row cards'>
                         {tests.map(function (item: any, index: number) {
                             return (
-                                <View className="card" onClick={handleCardClick.bind(this, item?.id as number)}>
+                                <View className="card"
+                                    style={{ background: colors[Math.floor(Math.random() * 4)] }}
+                                    onClick={handleCardClick.bind(this, item?.id as number)}
+                                >
                                     <View>
                                         <View className="card-title">{item?.name}</View>
                                         <View className="card-body">{item?.detail}</View>

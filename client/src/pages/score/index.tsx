@@ -47,6 +47,11 @@ export default function Score() {
         }
     }
 
+    //
+    function handleRecommand(id: string) {
+        Taro.navigateTo({ url: `/pages/viewer/index?id=${id}` });
+    }
+
     return (
         <View className="index">
             <View>
@@ -58,7 +63,7 @@ export default function Score() {
                 <View>
                     {recommands.map(function (recommand: any, index: number) {
                         return (
-                            <View>
+                            <View onClick={handleRecommand.bind(this, recommand?.id)}>
                                 <View>{recommand?.title}</View>
                             </View>
                         );
