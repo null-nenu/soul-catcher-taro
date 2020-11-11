@@ -6,3 +6,29 @@
   display: flex;
   justify-content: center;
 }
+
+.tip {}
+
+.tip .title {
+  /* rgba(220, 220, 220, 0.5)*/
+  background: rgba(193, 203, 215, 0.5);
+  padding: 24rpx;
+  border-radius: 16rpx;
+  margin-bottom: 48rpx;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+  font-weight: bold;
+}
+
+.tip .detail {
+  background: rgba(181, 196, 177, 0.25);
+  border-radius: 16rpx;
+  margin-bottom: 24rpx;
+  padding: 24rpx;
+}
+
+.tip .warning {
+  background: rgba(224, 205, 207, 0.25);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 48rpx;
+}

@@ -50,14 +50,14 @@ export default function Tip() {
                 <AtActivityIndicator mode='center' isOpened={loading} content='加载中...' />
             }
             {(!loading && evaluation !== undefined) &&
-                <View>
-                    <View>
+                <View className="tip">
+                    <View className="title">
                         <View>{evaluation?.name}</View>
                     </View>
-                    <View>
+                    <View className="detail">
                         <View>{evaluation?.detail}</View>
                     </View>
-                    <View>
+                    <View className="warning">
                         <View>{evaluation?.warning}</View>
                     </View>
                     <View>
