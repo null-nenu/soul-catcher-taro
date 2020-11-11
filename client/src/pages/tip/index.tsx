@@ -61,7 +61,7 @@ export default function Tip() {
                         <View>{evaluation?.warning}</View>
                     </View>
                     <View>
-                        <AtButton onClick={handleStartClick}>开始测试</AtButton>
+                        <View className="start-button" onClick={handleStartClick}>开始测试</View>
                     </View>
                 </View>
             }

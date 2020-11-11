@@ -1,0 +1,71 @@
+.index {}
+
+.level-wrap {}
+
+.level {
+  font-weight: bold;
+  font-size: 64rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.level-text {
+  padding: 32rpx;
+  border-radius: 6rpx;
+  border-bottom: solid 10rpx rgba(181, 196, 177, 1);
+}
+
+.box-wrap {
+  padding: 24rpx;
+  border-radius: 6rpx;
+  background: rgba(193, 203, 215, 0.5);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+  margin-top: 64rpx;
+}
+
+.box-tip {
+  padding: 12rpx 24rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: rgba(201, 192, 211, 1);
+  border-bottom: dotted 5rpx rgba(0, 0, 0, 0.25);
+}
+
+.recommands {
+  margin-top: 64rpx;
+}
+
+.recommands-tip {
+  padding: 12rpx 24rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: rgba(193, 203, 215, 0.8);
+  border-bottom: dotted 5rpx rgba(0, 0, 0, 0.25);
+}
+
+.recommand {
+  padding: 24rpx;
+  border-radius: 6rpx;
+  border-bottom: dotted 1rpx rgba(193, 203, 215, 1);
+}
+
+.recommand:active {
+  background-color: rgba(181, 196, 177, 0.15);
+}
+
+.download {
+  margin-top: 64rpx;
+}
+
+.download-text {
+  padding: 16rpx;
+}
+
+.download-tip {
+  padding: 12rpx 24rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: rgba(193, 203, 215, 0.8);
+  border-bottom: dotted 5rpx rgba(0, 0, 0, 0.25);
+}

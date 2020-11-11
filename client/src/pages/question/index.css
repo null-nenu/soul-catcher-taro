@@ -29,13 +29,11 @@
   background: rgba(201, 192, 211, 0.25);
 }
 
-.question {
-  
-}
+.question {}
 
 .question .content {
   /*background: rgba(220, 220, 220, 0.5);*/
-  border-bottom: dotted 1rpx  rgba(201, 192, 211, 0.75);
+  border-bottom: dotted 1rpx rgba(201, 192, 211, 0.75);
   padding: 38rpx;
   border-radius: 6rpx;
   margin-bottom: 32rpx;
@@ -49,5 +47,5 @@
 }
 
 .option:active {
-  background: rgba(220, 220, 220, 0.25);
+  opacity: 0.5;
 }

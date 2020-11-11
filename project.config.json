@@ -69,6 +69,18 @@
           "pathName": "pages/question/index",
           "query": "id=5",
           "scene": null
+        },
+        {
+          "name": "pages/score/index",
+          "pathName": "pages/score/index",
+          "query": "id=493",
+          "scene": null
+        },
+        {
+          "name": "pages/tip/index",
+          "pathName": "pages/tip/index",
+          "query": "id=5",
+          "scene": null
         }
       ]
     }

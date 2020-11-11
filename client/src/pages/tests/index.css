@@ -31,7 +31,7 @@ AtButton {
 }
 
 .card:active {
-  background: rgba(193, 203, 215, 0.8);
+  opacity: 0.5;
 }
 
 .card .card-title {
