@@ -15,6 +15,7 @@ export default function Question() {
     const [indexQ, setIndexQ] = useState(0);
     const [choices, setChoices] = useState([] as number[]);
     const [audio, setAudio] = useState(Taro.createInnerAudioContext());
+    const colors = ["rgba(193,203,215, 0.5)", "rgba(181,196,177, 0.5)", "rgba(224,205,207, 0.5)", "rgba(201,192,211, 0.5)"];
 
     useEffect(function () {
         // get & set evaluation id
@@ -125,11 +126,14 @@ export default function Question() {
             }
             {(!loading && evaluation !== undefined) &&
                 <View>
-                    <View>
+                    <View className="progress-wrap">
                         <AtProgress percent={(choices.length / (evaluation?.questions?.length || 0)) * 100} isHidePercent={true} />
                     </View>
-                    <View>
-                        <AtButton size="small" full={false} circle={true} onClick={handleVolumeClick} className="volume-button">
+                    <View className="volume-wrap">
+                        <View style={{ fontSize: "28rpx", color: "lightblue" }}>
+                            {indexQ + 1}/{evaluation?.questions?.length}
+                        </View>
+                        <View onClick={handleVolumeClick} className="volume-button">
                             {appModel.music === undefined &&
                                 <AtIcon value="blocked" size="18" />
                             }
@@ -139,18 +143,21 @@ export default function Question() {
                             {(appModel.music !== undefined && !appModel.mute) &&
                                 <AtIcon value="volume-plus" size="18" />
                             }
-                        </AtButton>
+                        </View>
                     </View>
                     <View>
                         {evaluation?.questions?.map(function (question: any, iQ: number) {
                             if (indexQ === iQ) {
                                 return (
-                                    < View >
-                                        <View>{question?.content}</View>
+                                    <View className="question">
+                                        <View className="content">{question?.content}</View>
                                         <View>
                                             {question?.options?.map(function (option: any, iO: number) {
                                                 return (
-                                                    <View onClick={handleOptionClick.bind(this, option?.id)}>
+                                                    <View className="option"
+                                                        style={{ background: colors[Math.floor(Math.random() * 4)] }}
+                                                        onClick={handleOptionClick.bind(this, option?.id)}
+                                                    >
                                                         <View>{option?.content}</View>
                                                     </View>
                                                 )

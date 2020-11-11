@@ -63,6 +63,12 @@
           "pathName": "pages/question/index",
           "query": "id=5",
           "scene": null
+        },
+        {
+          "name": "pages/question/index",
+          "pathName": "pages/question/index",
+          "query": "id=5",
+          "scene": null
         }
       ]
     }
