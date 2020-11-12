@@ -17,10 +17,24 @@ function useApp() {
     // mute
     const [mute, setMute] = useState(false);
 
+    /**
+     * 
+     */
+    function logout() {
+        try {
+            setCanI(false);
+            setNickName(undefined);
+            setAvatar(undefined);
+            Taro.removeStorageSync("token");
+        } catch (error) {
+            // do nothing
+        }
+    }
+
     return {
         canI, setCanI,
         nickName, setNickName,
-        avatar, setAvatar,
+        avatar, setAvatar, logout,
         background, setBackground,
         music, setMusic,
         solgan, setSolgan,
