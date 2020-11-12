@@ -19,16 +19,17 @@
 .box-wrap {
   padding: 24rpx;
   border-radius: 6rpx;
-  background: rgba(193, 203, 215, 0.5);
+  background: rgba(193, 203, 215, 1);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
   margin-top: 64rpx;
 }
 
 .box-tip {
   padding: 12rpx 24rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
   font-weight: bold;
-  color: rgba(201, 192, 211, 1);
+  /* rgba(201, 192, 211, 1) */
+  color: gray;
   border-bottom: dotted 5rpx rgba(0, 0, 0, 0.25);
 }
 
@@ -38,9 +39,10 @@
 
 .recommands-tip {
   padding: 12rpx 24rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
   font-weight: bold;
-  color: rgba(193, 203, 215, 0.8);
+  /* rgba(193, 203, 215, 0.8) */
+  color: gray;
   border-bottom: dotted 5rpx rgba(0, 0, 0, 0.25);
 }
 
@@ -64,8 +66,9 @@
 
 .download-tip {
   padding: 12rpx 24rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
   font-weight: bold;
-  color: rgba(193, 203, 215, 0.8);
+  /* rgba(193, 203, 215, 0.8)*/
+  color: gray;
   border-bottom: dotted 5rpx rgba(0, 0, 0, 0.25);
 }
