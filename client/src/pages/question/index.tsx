@@ -4,8 +4,9 @@ import { View } from "@tarojs/components";
 
 import request, { host } from "@/utils/request";
 import "./index.css";
-import { AtButton, AtIcon, AtProgress, AtActivityIndicator } from "taro-ui";
+import { AtButton, AtIcon, AtProgress, AtActivityIndicator, AtMessage } from "taro-ui";
 import useAppModel from "@/models/appModel";
+import colorful from "@/utils/colorful";
 
 export default function Question() {
     const appModel = useAppModel();
@@ -15,7 +16,7 @@ export default function Question() {
     const [indexQ, setIndexQ] = useState(0);
     const [choices, setChoices] = useState([] as number[]);
     const [audio, setAudio] = useState(Taro.createInnerAudioContext());
-    const colors = ["rgba(193,203,215, 0.5)", "rgba(181,196,177, 0.5)", "rgba(224,205,207, 0.5)", "rgba(201,192,211, 0.5)"];
+    const [colors, setColors] = useState(colorful());
 
     /**
      * 
@@ -122,18 +123,19 @@ export default function Question() {
      * @param optionId 
      */
     function handleOptionClick(optionId: number) {
-        let new_choices = [...choices, optionId];
-        setChoices(new_choices);
-
-        if (indexQ < (evaluation?.questions?.length || 0) - 1) {
-            setIndexQ(indexQ + 1);
-        } else {
-            //
-            let postData = {
-                evaluation: id,
-                options: new_choices
-            };
-            postEvaluation(postData);
+        if (indexQ === choices.length) {
+            let new_choices = [...choices, optionId];
+            setChoices(new_choices);
+            if (indexQ < (evaluation?.questions?.length || 0) - 1) {
+                setIndexQ(indexQ + 1);
+            } else {
+                //
+                let postData = {
+                    evaluation: id,
+                    options: new_choices
+                };
+                postEvaluation(postData);
+            }
         }
     }
 
@@ -153,6 +155,7 @@ export default function Question() {
      */
     return (
         <View className="index">
+            <AtMessage />
             {loading &&
                 <AtActivityIndicator mode='center' isOpened={loading} content='评测加载中...' />
             }
@@ -187,7 +190,7 @@ export default function Question() {
                                             {question?.options?.map(function (option: any, iO: number) {
                                                 return (
                                                     <View className="option"
-                                                        style={{ background: colors[Math.floor(Math.random() * 4)] }}
+                                                        style={{ background: colors?.[iO % colors?.length] || "rgb(220, 220, 220)" }}
                                                         onClick={handleOptionClick.bind(this, option?.id)}
                                                     >
                                                         <View>{option?.content}</View>
