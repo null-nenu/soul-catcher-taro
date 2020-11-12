@@ -40,9 +40,18 @@ export default function Index() {
 
   useEffect(function () {
     if (appModel?.background) {
-      setBackground(appModel.background)
+      // setBackground(appModel.background)
+      Taro.getFileSystemManager()?.readFile({
+        filePath: appModel?.background,
+        encoding: "base64",
+        success: (res: any) => {
+          if (res?.data !== undefined) {
+            setBackground(`data:image;base64,${res?.data}`)
+          }
+        }
+      })
     }
-  }, [appModel])
+  }, [appModel]);
 
   function handleLoginClick() {
     if (appModel.canI === true) {

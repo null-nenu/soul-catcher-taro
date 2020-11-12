@@ -5,7 +5,8 @@ export default {
     "pages/tip/index",
     "pages/question/index",
     "pages/score/index",
-    "pages/viewer/index"
+    "pages/viewer/index",
+    "pages/account/index"
   ],
   window: {
     backgroundTextStyle: "light",
