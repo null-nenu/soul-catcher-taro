@@ -17,6 +17,9 @@ export default function Question() {
     const [audio, setAudio] = useState(Taro.createInnerAudioContext());
     const colors = ["rgba(193,203,215, 0.5)", "rgba(181,196,177, 0.5)", "rgba(224,205,207, 0.5)", "rgba(201,192,211, 0.5)"];
 
+    /**
+     * 
+     */
     useEffect(function () {
         // get & set evaluation id
         if (getCurrentInstance().router?.params?.id) {
@@ -35,13 +38,18 @@ export default function Question() {
         );
     }, []);
 
-    // do something when id changed
+    /**
+     * 
+     */
     useEffect(function () {
         if (id !== undefined) {
             fetchEvaluation(id);
         }
     }, [id]);
 
+    /**
+     * 
+     */
     useEffect(function () {
         if (appModel.music !== undefined) {
             audio.src = appModel.music;
@@ -51,6 +59,9 @@ export default function Question() {
         }
     }, [appModel.music]);
 
+    /**
+     * 
+     */
     useEffect(function () {
         if (appModel.music !== undefined && audio !== undefined) {
             if (appModel.mute !== true) {
@@ -61,12 +72,19 @@ export default function Question() {
         }
     }, [appModel.mute]);
 
+    /**
+     * 
+     */
     useDidShow(function () {
         if (appModel.music !== undefined && appModel.mute !== true && audio !== undefined && audio?.src !== undefined) {
             audio.play();
         }
     });
 
+    /**
+     * 
+     * @param id 
+     */
     async function fetchEvaluation(id: string) {
         try {
             setLoading(true);
@@ -80,9 +98,13 @@ export default function Question() {
         }
     }
 
+    /**
+     * 
+     * @param data 
+     */
     async function postEvaluation(data: any) {
         try {
-            Taro.showLoading({ title: "评测中..." })
+            Taro.showLoading({ title: "评测中...", mask: true });
             let res = await request({ url: `/api/evaluation/score/`, method: 'POST', data: data });
             if (res !== undefined) {
                 Taro.hideLoading();
@@ -95,6 +117,10 @@ export default function Question() {
         }
     }
 
+    /**
+     * 
+     * @param optionId 
+     */
     function handleOptionClick(optionId: number) {
         let new_choices = [...choices, optionId];
         setChoices(new_choices);
@@ -111,6 +137,9 @@ export default function Question() {
         }
     }
 
+    /**
+     * 
+     */
     function handleVolumeClick() {
         if (appModel.music !== undefined) {
             appModel.setMute(!appModel.mute);
@@ -119,6 +148,9 @@ export default function Question() {
         }
     }
 
+    /**
+     * 
+     */
     return (
         <View className="index">
             {loading &&

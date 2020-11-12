@@ -1,0 +1,7 @@
+.logo-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 128rpx 0;
+}

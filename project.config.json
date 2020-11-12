@@ -81,6 +81,11 @@
           "pathName": "pages/tip/index",
           "query": "id=5",
           "scene": null
+        },
+        {
+          "name": "pages/login/index",
+          "pathName": "pages/login/index",
+          "scene": null
         }
       ]
     }

@@ -76,6 +76,7 @@ export default function Index() {
         success(res) {
           if (res.cancel !== true) {
             // yes
+            Taro.navigateTo({ url: "/pages/login/index" });
           }
         }
       })
