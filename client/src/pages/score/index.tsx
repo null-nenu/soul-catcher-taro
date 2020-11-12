@@ -4,7 +4,7 @@ import { View } from "@tarojs/components";
 
 import request, { host } from "@/utils/request";
 import "./index.css";
-import { AtActivityIndicator, AtButton } from "taro-ui";
+import { AtActivityIndicator, AtButton, AtMessage } from "taro-ui";
 
 export default function Score() {
     const [id, setId] = useState(undefined as undefined | string);
@@ -60,6 +60,7 @@ export default function Score() {
 
     return (
         <View className="index">
+            <AtMessage />
             {loading &&
                 <AtActivityIndicator mode='center' isOpened={loading} content='评测分析中...' />
             }

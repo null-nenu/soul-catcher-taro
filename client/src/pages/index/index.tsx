@@ -85,7 +85,7 @@ export default function Index() {
 
   return (
     <View className="index" style={{ background: `url(${background})`, backgroundSize: 'cover', transition: "background-image 3s" }}>
-      <AtMessage />
+      <AtMessage customStyle={{ marginTop: `${statusBarHeight + titleBarHeight}px` }} />
       <View style={{ height: `${statusBarHeight}px` }} />
       <View className='at-row' style={{ height: `${titleBarHeight}px` }}>
         <View className='at-col'>

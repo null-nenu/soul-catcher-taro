@@ -62,6 +62,11 @@ export default function App(props: PropsType) {
     // try to get user information
     (async function () {
       try {
+        let token = Taro.getStorageSync("token");
+        if (token?.length === 0) {
+          throw ("without token not login.");
+        }
+
         let infoAuth = await Taro.authorize({ scope: "scope.userInfo" });
         if (infoAuth) {
           let infoRes = await Taro.getUserInfo();
@@ -70,6 +75,7 @@ export default function App(props: PropsType) {
           appModel.setAvatar(infoRes.userInfo.avatarUrl);
         }
       } catch (error) {
+
       }
     })();
   }, []);

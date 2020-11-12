@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Taro, { getCurrentInstance } from "@tarojs/taro";
 import { View, Text } from "@tarojs/components";
-import { AtButton, AtCard, AtActivityIndicator } from "taro-ui";
+import { AtButton, AtCard, AtActivityIndicator, AtMessage } from "taro-ui";
 import request, { host } from "@/utils/request";
 import "./index.css";
 
@@ -46,6 +46,7 @@ export default function Tip() {
 
     return (
         <View className="index">
+            <AtMessage />
             {loading &&
                 <AtActivityIndicator mode='center' isOpened={loading} content='加载中...' />
             }

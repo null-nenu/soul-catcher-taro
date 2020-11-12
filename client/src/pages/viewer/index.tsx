@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Taro, { getCurrentInstance } from "@tarojs/taro";
 import { RichText, View } from "@tarojs/components";
 import request from '@/utils/request';
-import { AtActivityIndicator } from "taro-ui";
+import { AtActivityIndicator, AtMessage } from "taro-ui";
 
 export default function () {
     const [id, setId] = useState(undefined as undefined | string);
@@ -40,6 +40,7 @@ export default function () {
 
     return (
         <View>
+            <AtMessage />
             {loading &&
                 <AtActivityIndicator mode='center' isOpened={loading} content='加载中...' />
             }
