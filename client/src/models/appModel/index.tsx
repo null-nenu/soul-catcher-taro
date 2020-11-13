@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createModel } from "hox";
+import Taro from "@tarojs/taro";
 
 function useApp() {
     // status of user login
@@ -15,7 +16,23 @@ function useApp() {
     // solgan
     const [solgan, setSolgan] = useState("你从来都不是一座孤岛");
     // mute
-    const [mute, setMute] = useState(false);
+    const [mute, setMute] = useState(true);
+    const [muteInit, setMuteInit] = useState(true);
+
+    useEffect(function () {
+        if (muteInit === true) {
+            setMuteInit(false);
+        }
+
+        try {
+            if (muteInit !== true) {
+                Taro.setStorageSync("mute", mute);
+            }
+        } catch (error) {
+            // do noting
+            console.log(error);
+        }
+    }, [mute]);
 
     /**
      * 

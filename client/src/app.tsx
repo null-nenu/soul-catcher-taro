@@ -78,6 +78,22 @@ export default function App(props: PropsType) {
 
       }
     })();
+
+    // try to read setting
+    try {
+      let mute = Taro.getStorageSync("mute");
+      if (typeof (mute) === "boolean") {
+        appModel.setMute(mute);
+        console.log(mute, "lalala")
+      } else {
+        appModel.setMute(false);
+        console.log(mute, "lalalab")
+      }
+    } catch (error) {
+      // do nothing
+      console.log(error);
+      appModel.setMute(false);
+    }
   }, []);
 
   return (
