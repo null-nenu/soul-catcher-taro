@@ -31,6 +31,10 @@ export default function Account() {
         })
     }
 
+    function handleAboutClick() {
+        Taro.navigateTo({ url: "/pages/about/index" });
+    }
+
     return (
         <View className="index">
             <AtMessage />
@@ -64,7 +68,7 @@ export default function Account() {
                             <AtList>
                                 <AtListItem title='致谢' arrow='right' />
                                 <AtListItem title='免责声明' arrow='right' />
-                                <AtListItem title='关于应用' arrow='right' />
+                                <AtListItem title='关于应用' arrow='right' onClick={handleAboutClick} />
                             </AtList>
                         </View>
                     </View>

@@ -1,0 +1,47 @@
+.logo-wrap {
+  margin-top: 32rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 288rpx;
+  height: 288rpx;
+  background-size: cover;
+}
+
+/* blue #C1CBD7 (193,203,215) */
+/* green #b5c4b1 (181,196,177) */
+
+.logo-name {
+  margin-top: 32rpx;
+  color: #C1CBD7;
+  font-weight: bold;
+  font-size: 48rpx;
+}
+
+.logo-version {
+  margin-top: 16rpx;
+  font-weight: lighter;
+  font-size: 24rpx;
+}
+
+.slogan-wrap {
+  /* rgba(181, 196, 177, 0.5) */
+  background: #b5c4b1;
+  margin-top: 128rpx;
+  margin-bottom: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+  border-radius: 6rpx;
+}
+
+.slogan-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

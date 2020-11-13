@@ -7,7 +7,8 @@ export default {
     "pages/score/index",
     "pages/viewer/index",
     "pages/account/index",
-    "pages/login/index"
+    "pages/login/index",
+    "pages/about/index"
   ],
   window: {
     backgroundTextStyle: "light",
