@@ -10,7 +10,8 @@ export default {
     "pages/login/index",
     "pages/about/index",
     "pages/declare/index",
-    "pages/thanks/index"
+    "pages/thanks/index",
+    "pages/destroy/index"
   ],
   window: {
     backgroundTextStyle: "light",

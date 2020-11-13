@@ -43,6 +43,10 @@ export default function Account() {
         Taro.navigateTo({ url: "/pages/thanks/index" });
     }
 
+    function handleDestroyClick() {
+        Taro.navigateTo({ url: "/pages/destroy/index" });
+    }
+
     return (
         <View className="index">
             <AtMessage />
@@ -66,7 +70,7 @@ export default function Account() {
                         <View>
                             <AtList>
                                 <AtListItem title='退出登录' onClick={handleLogoutClick} />
-                                <AtListItem title='删除账号' arrow='right' />
+                                <AtListItem title='删除账号' arrow='right' onClick={handleDestroyClick} />
                             </AtList>
                         </View>
                     </View>
