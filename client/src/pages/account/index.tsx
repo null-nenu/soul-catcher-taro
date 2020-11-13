@@ -35,6 +35,14 @@ export default function Account() {
         Taro.navigateTo({ url: "/pages/about/index" });
     }
 
+    function handleDeclareClick() {
+        Taro.navigateTo({ url: "/pages/declare/index" });
+    }
+
+    function handleThanksClick() {
+        Taro.navigateTo({ url: "/pages/thanks/index" });
+    }
+
     return (
         <View className="index">
             <AtMessage />
@@ -66,8 +74,8 @@ export default function Account() {
                         <View className="tip">关于</View>
                         <View>
                             <AtList>
-                                <AtListItem title='致谢' arrow='right' />
-                                <AtListItem title='免责声明' arrow='right' />
+                                <AtListItem title='致谢' arrow='right' onClick={handleThanksClick} />
+                                <AtListItem title='免责声明' arrow='right' onClick={handleDeclareClick} />
                                 <AtListItem title='关于应用' arrow='right' onClick={handleAboutClick} />
                             </AtList>
                         </View>
