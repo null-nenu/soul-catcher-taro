@@ -43,8 +43,10 @@ function useApp() {
             setNickName(undefined);
             setAvatar(undefined);
             Taro.removeStorageSync("token");
+            Taro.atMessage({ message: "退出登录成功。", type: "success" });
         } catch (error) {
             // do nothing
+            Taro.atMessage({ message: "退出登录失败。", type: "error" });
         }
     }
 
