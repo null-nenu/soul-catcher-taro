@@ -89,7 +89,7 @@ export default function Index() {
       <View style={{ height: `${statusBarHeight}px` }} />
       <View className='at-row' style={{ height: `${titleBarHeight}px` }}>
         <View className='at-col'>
-          <View onClick={handleLoginClick} style={{ display: "block" }}>
+          <View  onClick={handleLoginClick}>
             <AtAvatar size="small" customStyle={{ fontSize: 30 }} className={`${appModel.canI ? "" : "at-icon at-icon-user"}`} image={`${appModel.canI ? appModel.avatar : ""}`} />
           </View>
         </View>

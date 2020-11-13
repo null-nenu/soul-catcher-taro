@@ -1,1 +1,33 @@
+.user-wrap {
+  background: #C1CBD7;
+  border-radius: 6rpx;
+  padding: 24rpx;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+  margin-bottom: 32rpx;
+}
 
+.user-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.user-name {
+  margin-left: 32rpx;
+  font-weight: bold;
+  font-size: 38rpx;
+}
+
+.setting-wrap {
+  margin-top: 64rpx;
+}
+
+.setting-wrap .tip {
+  padding: 12rpx 24rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  /* rgba(193, 203, 215, 0.8)*/
+  color: gray;
+  border-bottom: dotted 5rpx rgba(193, 203, 215, 0.85);
+}

@@ -84,10 +84,8 @@ export default function App(props: PropsType) {
       let mute = Taro.getStorageSync("mute");
       if (typeof (mute) === "boolean") {
         appModel.setMute(mute);
-        console.log(mute, "lalala")
       } else {
         appModel.setMute(false);
-        console.log(mute, "lalalab")
       }
     } catch (error) {
       // do nothing
