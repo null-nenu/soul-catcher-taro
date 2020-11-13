@@ -87,7 +87,8 @@ export default function Login() {
                 <AtIcon value='user' size='128' color="rgba(193,203,215, 1)"></AtIcon>
             </View>
             <View>
-                <AtButton type="primary" size="normal" openType="getUserInfo" onGetUserInfo={handleLoginClick}>使用微信登录</AtButton>
+                <AtButton type="primary" size="normal" disabled={appModel.canI}
+                    openType="getUserInfo" onGetUserInfo={handleLoginClick}>使用微信登录</AtButton>
             </View>
         </View>
     );
