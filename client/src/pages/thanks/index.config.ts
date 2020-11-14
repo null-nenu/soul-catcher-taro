@@ -1,3 +1,3 @@
 export default {
-    navigationBarTitleText: "注销账号"
+    navigationBarTitleText: "致谢"
 }

@@ -97,6 +97,12 @@
         {
           "name": "pages/about/index",
           "pathName": "pages/about/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/destroy/index",
+          "pathName": "pages/destroy/index",
           "scene": null
         }
       ]

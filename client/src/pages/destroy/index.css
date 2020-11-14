@@ -1,0 +1,16 @@
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 64rpx 0;
+}
+
+.tip {
+  font-weight: bold;
+  text-align: center;
+}
+
+.delete {
+  margin-top: 48rpx;
+}
