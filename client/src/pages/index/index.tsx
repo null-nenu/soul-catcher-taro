@@ -68,7 +68,7 @@ export default function Index() {
 
   function handleHistoryClick() {
     if (appModel.canI) {
-
+      Taro.navigateTo({ url: "/pages/history/index" });
     } else {
       Taro.showModal({
         title: "请登录",
@@ -83,13 +83,17 @@ export default function Index() {
     }
   }
 
+  function handleStoryClick() {
+    Taro.navigateTo({ "url": "/pages/story/index" });
+  }
+
   return (
     <View className="index" style={{ background: `url(${background})`, backgroundSize: 'cover', transition: "background-image 3s" }}>
       <AtMessage customStyle={{ marginTop: `${statusBarHeight + titleBarHeight}px` }} />
       <View style={{ height: `${statusBarHeight}px` }} />
       <View className='at-row' style={{ height: `${titleBarHeight}px` }}>
         <View className='at-col'>
-          <View  onClick={handleLoginClick}>
+          <View onClick={handleLoginClick}>
             <AtAvatar size="small" customStyle={{ fontSize: 30 }} className={`${appModel.canI ? "" : "at-icon at-icon-user"}`} image={`${appModel.canI ? appModel.avatar : ""}`} />
           </View>
         </View>
@@ -107,7 +111,7 @@ export default function Index() {
       </View>
       <View className='at-row' style={{ height: "256rpx" }}>
         <View className='at-col sub-button-wrap'>
-          <AtButton className="sub-button">心理漫画</AtButton>
+          <AtButton className="sub-button" onClick={handleStoryClick}>心理漫画</AtButton>
         </View>
         <View className='at-col  sub-button-wrap'>
           <AtButton className="sub-button" onClick={handleHistoryClick}>评测记录</AtButton>
