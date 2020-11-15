@@ -103,6 +103,12 @@
         {
           "name": "pages/destroy/index",
           "pathName": "pages/destroy/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/history/index",
+          "pathName": "pages/history/index",
           "scene": null
         }
       ]

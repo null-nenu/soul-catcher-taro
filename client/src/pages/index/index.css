@@ -1,15 +1,17 @@
-.index {}
+.index {
+}
 
 .start-button {
   width: 250rpx;
   height: 250rpx;
   align-items: center;
-  background: rgba(105, 105, 105, 0.4);
+  background: rgba(220, 220, 220, 0.4);
   border: none;
   color: rgba(255, 255, 255, 0.8);
   font-size: 64rpx;
   font-weight: bold;
   backdrop-filter: blur(5px);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
 }
 
 .sub-button-wrap {
@@ -17,7 +19,7 @@
 }
 
 .sub-button {
-  background: rgba(105, 105, 105, 0.4);
+  background: rgba(220, 220, 220, 0.4);
   border: none;
   color: rgba(255, 255, 255, 0.8);
   font-weight: bold;
