@@ -11,7 +11,9 @@ export default {
     "pages/about/index",
     "pages/declare/index",
     "pages/thanks/index",
-    "pages/destroy/index"
+    "pages/destroy/index",
+    "pages/story/index",
+    "pages/history/index"
   ],
   window: {
     backgroundTextStyle: "light",
