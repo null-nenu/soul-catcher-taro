@@ -4,6 +4,7 @@
   border-radius: 6rpx;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
   margin-bottom: 64rpx;
+  margin-top: 48rpx;
 }
 
 .overview-wrap{
@@ -19,11 +20,11 @@
 
 .overview-title {
   font-weight: bold;
-  font-size: 24rpx;
+  font-size: 32rpx;
 }
 
 .overview-data {
-  font-size: 48rpx;
+  font-size: 68rpx;
 }
 
 .historys-tip {

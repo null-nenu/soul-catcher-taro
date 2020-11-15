@@ -109,6 +109,12 @@
         {
           "name": "pages/history/index",
           "pathName": "pages/history/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/story/index",
+          "pathName": "pages/story/index",
           "scene": null
         }
       ]
