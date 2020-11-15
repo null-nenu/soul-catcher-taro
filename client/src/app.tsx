@@ -20,7 +20,7 @@ export default function App(props: PropsType) {
   useEffect(function () {
     // init cloud development if in wechat mini app
     if ("weapp" === process.env.TARO_ENV) {
-      Taro.cloud.init();
+      //Taro.cloud.init();
     }
 
     // try to get app current information
