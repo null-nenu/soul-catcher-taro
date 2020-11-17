@@ -33,9 +33,12 @@ export default function Tip() {
             if (res !== undefined) {
                 setLoading(false);
                 setEvaluation(res);
+            }else{
+                throw("request error");
             }
         } catch (error) {
             setLoading(false);
+            Taro.atMessage({ message: "获取量表详情失败，请重试。", type: "error" });
         }
     }
 

@@ -23,9 +23,12 @@ export default function Tests() {
             if (res !== undefined) {
                 setLoading(false);
                 setTests(res);
+            } else {
+                throw ("request error");
             }
         } catch (error) {
             setLoading(false);
+            Taro.atMessage({ message: "获取量表列表失败，请重试。", type: "error" });
         }
     }
 

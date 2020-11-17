@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Taro from "@tarojs/taro";
 import useAppModel from "@/models/appModel";
 
-export const host: string = "https://soul.laoyoumoyan.com";
+export const host: string = "https://www.ayuuu.cn";
 
 export default async function request(params: Taro.request.Option<any>) {
     let header = params?.header || {} as any;

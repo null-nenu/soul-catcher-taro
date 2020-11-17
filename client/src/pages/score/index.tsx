@@ -35,10 +35,11 @@ export default function Score() {
                 setLoading(false);
                 setRecord(res);
             } else {
-                setLoading(false);
+                throw("request error");
             }
         } catch (error) {
             setLoading(false);
+            Taro.atMessage({ message: "获取评测详情失败，请重试。", type: "error" });
         }
     }
 
@@ -47,15 +48,50 @@ export default function Score() {
             let res = await request({ url: `/api/story/recommend/?id=${id}` });
             if (res !== undefined) {
                 setRecommands(res);
+            } else {
+                throw ("request error");
             }
         } catch (error) {
-
+            Taro.atMessage({ message: "推荐获取失败。", type: "error" });
         }
     }
 
     //
     function handleRecommand(id: string) {
         Taro.navigateTo({ url: `/pages/viewer/index?id=${id}` });
+    }
+
+    async function handleSaveClick() {
+        try {
+            Taro.showLoading({ title: "获取评测中...", mask: true });
+            let res = await request({ url: `/api/evaluation_record/getdetail/?id=${id}` });
+            if (res !== undefined) {
+                Taro.downloadFile({
+                    url: `${host}${res?.url}`,
+                    success: function (res) {
+                        if (res.statusCode === 200) {
+                            Taro.saveImageToPhotosAlbum({
+                                filePath: res.tempFilePath,
+                                success: function () {
+                                    Taro.hideLoading();
+                                    Taro.atMessage({ message: "获取本次评测记录成功，请前往图库应用查看。", type: "success" });
+                                },
+                                fail: function () {
+                                    throw ('save to album error.');
+                                }
+                            })
+                        } else {
+                            throw ('download error.');
+                        }
+                    }
+                })
+            } else {
+                throw ("request error");
+            }
+        } catch (error) {
+            Taro.hideLoading();
+            Taro.atMessage({ message: "下载评测记录失败，请重试。", type: "error" });
+        }
     }
 
     return (
@@ -100,7 +136,7 @@ export default function Score() {
                             <View className="download-text">
                                 <View>评测记录只用于帮助专业人士分析您的心理状态，如非必要，您无需获取本记录。</View>
                                 <View style={{ height: "16rpx" }}></View>
-                                <AtButton size="small" type="primary">获取本次评测记录</AtButton>
+                                <AtButton size="small" type="primary" onClick={handleSaveClick}>获取本次评测记录</AtButton>
                             </View>
                         </View>
                     </View>
